@@ -6,9 +6,9 @@ class ScoresController < ApplicationController
     end 
 
     def create
-        binding.pry
+        # binding.pry
         score = Score.new(score_params)
-        if goal.save
+        if score.save
             render json: score
         else 
             render :json => {:error => score.errors}
@@ -18,7 +18,7 @@ class ScoresController < ApplicationController
     private
 
     def score_params
-        params.require(:score).permit(:name, :score)
+        params.permit(:name, :score)
     end 
     
 end
